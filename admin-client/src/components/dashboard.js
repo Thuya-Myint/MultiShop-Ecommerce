@@ -29,6 +29,7 @@ const Dashboard = ({ token, id, username, role }) => {
         if (orderList.length) {
             setAllCount();
         }
+        fetchStatus();
     }, [orderList]);
 
     const setAllCount = () => {
