@@ -45,8 +45,8 @@ const OrderGroup = ({ role, itemsPerPage, orderLists, setTop, clickItem, setClic
                                 <div className='w-[15%] flex justify-center items-center'>
                                     {
                                         (() => {
-                                            const firstProduct = order.orderedproduct[0];
-                                            const matchedShop = allShop.find(shop => shop.shopId === firstProduct.shopId);
+                                            const firstProduct = order?.orderedproduct[0];
+                                            const matchedShop = allShop?.find(shop => shop.shopId === firstProduct.shopId);
 
                                             return matchedShop && (
                                                 <img
