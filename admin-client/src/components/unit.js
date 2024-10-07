@@ -30,7 +30,7 @@ const Unit = ({ token, id, username, role }) => {
     const fetchUnits = async (tv) => {
         setLoading(true);
         try {
-            const units = await axios.get('http://localhost:8090/api/unit/all', {
+            const units = await axios.get('https://multishop-ecommerce.onrender.com/api/unit/all', {
                 headers: {
                     'x-access-token': token
                 }
@@ -55,7 +55,7 @@ const Unit = ({ token, id, username, role }) => {
         if (uname === '' || ushort === '') return toastBack('fail', 'input InValid!');
         setLoading(true);
         try {
-            await axios.post('http://localhost:8090/api/unit/addUnit', {
+            await axios.post('https://multishop-ecommerce.onrender.com/api/unit/addUnit', {
                 unitname: uname,
                 short: ushort
             }, {
