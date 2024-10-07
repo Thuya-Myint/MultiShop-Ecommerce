@@ -21,6 +21,9 @@ const Dashboard = ({ token, id, username, role }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        fetchStatus();
+    }, [])
+    useEffect(() => {
         fetchOrderLists();
         fetchStatus();
     }, [token, id]);
