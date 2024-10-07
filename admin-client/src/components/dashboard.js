@@ -20,20 +20,31 @@ const Dashboard = ({ token, id, username, role }) => {
     const [statusList, setStatusList] = useState([]);
     const navigate = useNavigate();
 
+    // Fetch status once when the component mounts
     useEffect(() => {
         fetchStatus();
-    }, [])
+    }, []);
+
+    // Fetch order lists whenever token or id changes
     useEffect(() => {
-        fetchOrderLists();
-        fetchStatus();
+        if (token && id) {
+            fetchOrderLists();
+        }
     }, [token, id]);
 
+    // Update order count and chart data whenever orderList changes
     useEffect(() => {
         if (orderList.length) {
             setAllCount();
         }
-        fetchStatus();
     }, [orderList]);
+
+    // Update chart data when both orderCount and statusList are available
+    useEffect(() => {
+        if (orderCount.length && statusList.length) {
+            updateChartData(orderCount);
+        }
+    }, [orderCount, statusList]);
 
     const setAllCount = () => {
         const counts = {};
@@ -54,8 +65,8 @@ const Dashboard = ({ token, id, username, role }) => {
             ...Object.keys(counts).map(status => ({ status, count: counts[status] }))
         ];
         setOrderCount(countArray);
-        updateChartData(countArray);
     };
+
     const fetchStatus = async () => {
         try {
             const status = await axios.get('https://multishop-ecommerce.onrender.com/api/status/status/AllStatus', {
@@ -65,22 +76,22 @@ const Dashboard = ({ token, id, username, role }) => {
             });
             console.log(status)
             setStatusList(Object.values(status.data));
-
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     const updateChartData = (countArray) => {
         const labels = countArray.map(item => item.status);
         const data = countArray.map(item => item.count);
-        // Create a mapping for status colors for easy access
         const colors = {};
+
+        // Ensure statusList is ready
         statusList.forEach(({ status, color }) => {
-            colors[status] = `${color}99`; // Use hex color with 0.6 opacity
+            colors[status] = `${color}99`; // Use hex color with 60% opacity
         });
 
-        const backgroundColors = countArray.map(item => colors[item.status] || '#CCCCCC99'); // Default color if status not found
+        const backgroundColors = countArray.map(item => colors[item.status] || '#CCCCCC99'); // Default color
 
         setChartData({
             labels: labels,
@@ -89,10 +100,9 @@ const Dashboard = ({ token, id, username, role }) => {
                     label: 'Orders Count',
                     data: data,
                     backgroundColor: backgroundColors,
-                    borderColor: backgroundColors.map(color => color.replace(/99$/, 'FF')), // Make border colors fully opaque
+                    borderColor: backgroundColors.map(color => color.replace(/99$/, 'FF')), // Fully opaque border
                     borderWidth: 1,
                 },
-
             ],
         });
     };
@@ -116,7 +126,6 @@ const Dashboard = ({ token, id, username, role }) => {
                 })).filter(order => order?.orderedproduct.length > 0);
                 setOrderLists(filteredOrders);
             }
-
         } catch (error) {
             console.error('Error fetching orders:', error);
         }
@@ -147,7 +156,7 @@ const Dashboard = ({ token, id, username, role }) => {
                         }
                     </div>
                 </div>
-                <div className='transition-all duration-300  w-[80%] rounded-md h-[60%] flex items-center justify-center bg-whitev3 bg-opacity-35 hover:bg-opacity-75 cursor-pointer p-2'>
+                <div className='transition-all duration-300 w-[80%] rounded-md h-[60%] flex items-center justify-center bg-whitev3 bg-opacity-35 hover:bg-opacity-75 cursor-pointer p-2'>
                     <Bar data={chartData} options={{
                         responsive: true,
                         plugins: {
@@ -163,12 +172,10 @@ const Dashboard = ({ token, id, username, role }) => {
                 </div>
                 <div className='flex justify-end w-[80%] p-4'>
                     <button className='font-light italic flex items-center' onClick={() => navigate('/order')}>
-                        <div className=' transition-all duration-500 opacity-50 hover:opacity-100 '>Click To See Order Details</div>
+                        <div className='transition-all duration-500 opacity-50 hover:opacity-100'>Click To See Order Details</div>
                         <img src={order} alt="" className='w-6 ml-2 opacity-100' />
                     </button>
                 </div>
-
-
             </div>
         </div>
     );
