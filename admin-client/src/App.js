@@ -6,7 +6,7 @@ import Product from './components/product';
 import Order from './components/order';
 import Status from './components/status';
 import Store from './components/store';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 
@@ -31,17 +31,17 @@ function App() {
     }, [token]);
     return (
         <div className="">
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Login setid={setId} setusername={setUsername} setrole={setRole} />} />
+            <Router>
+                <Switch>
+                    <Route exact path='/' element={<Login setid={setId} setusername={setUsername} setrole={setRole} />} />
                     <Route path='/dashboard' element={<Dashboard token={token} id={id} username={username} role={role} />} />
                     <Route path='/unit' element={<Unit token={token} id={id} username={username} role={role} />} />
                     <Route path='/product' element={<Product token={token} id={id} username={username} role={role} />} />
                     <Route path='/order' element={<Order token={token} id={id} username={username} role={role} />} />
                     <Route path='/status' element={<Status token={token} id={id} username={username} role={role} />} />
                     <Route path='/store' element={<Store tokenx={token} id={id} username={username} role={role} />} />
-                </Routes>
-            </BrowserRouter>
+                </Switch>
+            </Router>
         </div >
     );
 }
