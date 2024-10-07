@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer/Edge */
+    user-select: none;          /* Standard */
+
+  }
+.bg-img1{
+    background-image: url(./assets/image/justin-luebke-ARSCXacOtkY-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat:  no-repeat;
+}
+.bg-img2{
+    background-image: url(./assets/image/macOS\ Big\ Sur\ Wallpaper\ 5\ YTECHB.jpg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat:  no-repeat;
+}
+.bg-glass-morph{
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+.bg-glass-morph1{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+.btn-lg:hover{
+    -webkit-backdrop-filter: blur(0px);
+    backdrop-filter: blur(0px);
+}
+@font-face {
+    font-family: app;
+    src: url('./assets/font/apple-ii-screen-typeface-font/AppleIiScreenTypeface-2aP3.ttf');
+}
+.wel-font{
+    font-family:'app','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+@font-face {
+    font-family: blinka;
+    src: url("./assets/font/Blinka.ttf");
+}
+.sig-font{
+    font-family: "blinka", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+@keyframes loadtext{
+    0%{opacity: 1;}
+    50%{opacity: 0.5;}
+    100%{opacity: 1;}
+}
+.load-stick{
+    animation: loading1 3s infinite ease;
+}
+@keyframes loading1{
+    0%{
+        width:0%
+    }
+    25%{
+        width:25%
+    }
+    50%{
+        width:50%
+    }
+    75%{
+        width:75%
+    }
+    100%{
+        width: 100%;
+    }
+}
+.fetch-text {
+    animation: loadtext 1s infinite ease;
+}
+.card-main:hover .see-details{
+    display: block;
+    top:5%;
+    opacity: 1;
+}
+.hov-del:hover .del-tar{
+    display: block;
+    width: 30%;
+}
+.load-Customer{
+    animation: loading1 4s ease-in-out infinite  ;
+}

@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
+}
+@font-face {
+    font-family: app;
+    src: url("./assets/font/apple-ii-screen-typeface-font/AppleIiScreenTypeface-2aP3.ttf");
+}
+@font-face {
+    font-family: blinka;
+    src: url("./assets/font/Blinka.ttf");
+}
+.bg-cus {
+    background-image: url(./assets/image/ishan-seefromthesky-JQGEj_ayWIg-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.wel-font {
+    font-family: "app", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.sig-font,
+.sign-font {
+    font-family: "blinka", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+/* .sign-font{
+    font-family:'blinka','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+} */
+@keyframes loading {
+    0% {
+        width: 10px;
+        left: 10%;
+    }
+    25% {
+        left: 27%;
+        width: 20px;
+    }
+    50% {
+        left: 47%;
+        width: 10px;
+    }
+    75% {
+        left: 67%;
+        width: 20px;
+    }
+    100% {
+        left: 87%;
+        width: 10px;
+    }
+}
+@keyframes loading1 {
+    0% {
+        width: 0%;
+    }
+    25% {
+        width: 25%;
+    }
+    50% {
+        width: 50%;
+    }
+    75% {
+        width: 75%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes loadtext {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.load-stick {
+    animation: loading1 3s infinite ease;
+}
+.fetch-text {
+    animation: loadtext 1s infinite ease;
+}
+.custom-spinner {
+    width: 20px;
+    height: 2px;
+    background-color: aliceblue;
+    animation: loading 3s infinite ease;
+}
+.icn:hover {
+    .text {
+        display: block;
+    }
+}
+.bg-loading {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+.itemMainDiv:hover {
+    img {
+        display: flex;
+    }
+}
+.custom-shadow {
+    transition: all 0.4s;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4);
+}
+.custom-shadow:hover {
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.7);
+}
+.cus-bg {
+    background-image: url(./assets/image/convinient.jpg);
+    background-size: cover;
+}
+.clr-bg:hover{
+    .clr-hex{
+        display: block;
+    }
+}
+.div-main:hover .div-items{
+    display: flex;
+}
+.stick-Ani{
+    animation: stickLoads 3s ease-in-out infinite;
+}
+@keyframes stickLoads {
+    0%{left: 10%; opacity: 1;}
+    25%{left: 25%; opacity: 0.5;}
+    50%{left: 50%; opacity: 1;}
+    75%{left: 75%; opacity: 0.5;}
+    100%{left: 95%; opacity: 1;}
+
+}
