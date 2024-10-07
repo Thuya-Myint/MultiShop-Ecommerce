@@ -52,8 +52,6 @@ const signUp = async (req, res) => {
         const newUser = await Customer.create({
             username: req.body.username,
             password: encryption(req.body.password),
-            phonenumber: req.body.phonenumber,
-            address: req.body.address,
             imgSrc: req.body.imgSrc
         });
         const token = jwt.sign(
