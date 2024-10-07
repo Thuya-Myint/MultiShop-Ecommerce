@@ -41,7 +41,7 @@ const OrderGroup = ({ role, itemsPerPage, orderLists, setTop, clickItem, setClic
                             <div key={order._id} className={`w-full cursor-pointer h-[8%] flex items-center px-2 bg-obsidian text-white ${index !== currentItems.length - 1 ? 'border-b-2 border-whitev2' : ''}`}>
                                 <div className='w-[10%]'>{index + 1}</div>
                                 <div className='w-[20%] capitalize '>{order.customername}</div>
-                                <div className='w-[20%] border-black'>{order.address.slice(0, 20) + '...'}</div>
+                                <div className='w-[20%] border-black'>{order.address.length > 20 ? order.address.slice(0, 20) + '...' : order.address}</div>
                                 <div className='w-[15%] flex justify-center items-center'>
                                     {
                                         (() => {
@@ -74,7 +74,7 @@ const OrderGroup = ({ role, itemsPerPage, orderLists, setTop, clickItem, setClic
                                 <div className='w-[8%] flex items-center justify-center'>
 
                                     {
-                                        stList.map((status, index) => (
+                                        stList?.map((status, index) => (
                                             status.status === order.status.charAt(0).toUpperCase() + order.status.slice(1) &&
                                             <div className='w-[10px] h-[10px] rounded-full' style={{ backgroundColor: status.color }}>
 

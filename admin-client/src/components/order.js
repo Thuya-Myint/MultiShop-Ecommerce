@@ -113,7 +113,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
                 setOrderListDB(allOrders);
 
             } else {
-                const filteredOrders = allOrders.map(order => ({
+                const filteredOrders = allOrders?.map(order => ({
                     ...order,
                     orderedproduct: order.orderedproduct.filter(product => product.shopId === id)
                 })).filter(order => order?.orderedproduct.length > 0);
