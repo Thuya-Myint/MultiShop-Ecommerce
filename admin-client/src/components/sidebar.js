@@ -9,6 +9,7 @@ import product from '../assets/image/cube-outline.svg';
 import store from '../assets/image/storefront-outline.svg';
 import status from '../assets/image/barcode-outline.svg';
 import order from '../assets/image/deliver-svgrepo-com.svg'
+import logout from '../assets/image/logout-svgrepo-com.svg'
 import { jwtDecode } from 'jwt-decode';
 
 
@@ -60,6 +61,10 @@ const Sidebar = ({ actInd }) => {
         setActive(index);
         navigate(pages[index], { state: { active: index } });
     }
+    const handleLogOut = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
     return (
         <div className={`relative transition-all z-50 p-1 duration-[200ms] hover: justify-between ${expand ? 'w-[200px] items-start bg-opacity-100' : ' w-[60px] items-center'} flex flex-col bg-gray-200 bg-opacity-70 shadow-lg  h-full`}>
 
@@ -88,8 +93,8 @@ const Sidebar = ({ actInd }) => {
             </div>
             <div className={` w-full px-2 py-2 border-t-[1px] border-slate-400 flex ${!expand ? 'justify-center' : 'hover:bg-black hover:bg-opacity-30 hover:rounded-md'}`}>
                 <div className={`transition-all duration-[300ms] cursor-pointer relative icn w-full flex justify-between items-center`}>
-                    <img src={profile} alt="expand" className={`transition-all duration-200 w-8 ${!expand ? 'hover:scale-125' : ''}`} />
-                    <div className={` top-[6px] text-end  left-[150%] ${expand ? 'block ' : 'hidden absolute bg-slate-300'} text px-2 font-semibold text-sm`}>profile</div>
+                    <img src={logout} alt="expand" className={`transition-all duration-200 w-8 ${!expand ? 'hover:scale-125' : ''}`} />
+                    <div className={` top-[6px] text-end  left-[150%] ${expand ? 'block ' : 'hidden absolute bg-slate-300'} text px-2 font-semibold text-sm`} onClick={handleLogOut}>Sign Out</div>
                 </div>
             </div>
 
