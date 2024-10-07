@@ -71,7 +71,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
                 tempAllList.push(order)
                 totalOrders += 1;
                 let stat = order.status.charAt(0).toUpperCase() + order.status.slice(1);
-                console.log(stat)
+
                 if (stat === 'Pending') {
                     tempWaitingList.push(order);
                     pendingOrders += 1;
@@ -105,8 +105,8 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
                     'x-access-token': token
                 }
             });
-
-            const allOrders = Object.values(response.data);
+            let allOrders = [];
+            allOrders = Object.values(response.data);
             console.log(allOrders)
             if (role === 'super admin') {
                 setOrderLists(allOrders);
@@ -122,7 +122,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
             }
 
         } catch (error) {
-            console.error('Error fetching orders:', error);
+            console.log('Error fetching orders:', error);
         }
     }
 

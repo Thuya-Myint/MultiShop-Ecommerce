@@ -54,7 +54,7 @@ const Dashboard = ({ token, id, username, role }) => {
     };
     const fetchStatus = async () => {
         try {
-            const status = await axios.get('http://localhost:8090/api/status/status/AllStatus', {
+            const status = await axios.get('https://multishop-ecommerce.onrender.com/api/status/status/AllStatus', {
                 headers: {
                     'x-access-token': token
                 }
@@ -95,7 +95,7 @@ const Dashboard = ({ token, id, username, role }) => {
 
     const fetchOrderLists = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/order/allOrder", {
+            const response = await axios.get("https://multishop-ecommerce.onrender.com/api/order/allOrder", {
                 headers: {
                     'x-access-token': token
                 }
