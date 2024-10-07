@@ -43,7 +43,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
     }, [orderLists, selectedDate, id]);
     const fetchStatus = async (tv) => {
         try {
-            const status = await axios.get('http://localhost:8090/api/status/status/AllStatus', {
+            const status = await axios.get('https://multishop-ecommerce.onrender.com/api/status/status/AllStatus', {
                 headers: {
                     'x-access-token': token
                 }
@@ -100,7 +100,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
     };
     const fetchOrderLists = async () => {
         try {
-            const response = await axios.get("http://localhost:8090/api/order/allOrder", {
+            const response = await axios.get("https://multishop-ecommerce.onrender.com/api/order/allOrder", {
                 headers: {
                     'x-access-token': token
                 }
@@ -129,7 +129,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
     const stateOrder = async (orderConfirm, pstatus, status) => {
         if (orderConfirm) {
             try {
-                await axios.put(`http://localhost:8090/api/order/order/${clickItem._id}`, {
+                await axios.put(`https://multishop-ecommerce.onrender.com/api/order/order/${clickItem._id}`, {
                     ...clickItem,
                     status: status
                 }, {
@@ -152,7 +152,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
 
         for (const order of clickItem?.orderedproduct || []) {
             try {
-                const { data: product } = await axios.get(`http://localhost:8090/api/product/findProduct/${order.productId}`);
+                const { data: product } = await axios.get(`https://multishop-ecommerce.onrender.com/api/product/findProduct/${order.productId}`);
                 let newQty = product.initialstock;
 
                 if (caseSts1 === 'Completed' && caseSts === 'Pending') {
@@ -168,7 +168,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
                     newQty = product.initialstock + order.quantity;
                 }
 
-                await axios.put(`http://localhost:8090/api/product/${order.productId}`, {
+                await axios.put(`https://multishop-ecommerce.onrender.com/api/product/${order.productId}`, {
                     initialstock: newQty
                 }, {
                     headers: {
@@ -183,7 +183,7 @@ const Order = ({ token, id, username, role, setOrderListDB }) => {
     }
     const fetchAllShop = async () => {
         try {
-            const allShop = await axios.get('http://localhost:8090/api/user/all', {
+            const allShop = await axios.get('https://multishop-ecommerce.onrender.com/api/user/all', {
                 headers: {
                     'x-access-token': token
                 }

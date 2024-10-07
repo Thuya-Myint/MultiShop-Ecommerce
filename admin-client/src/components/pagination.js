@@ -67,7 +67,7 @@ const Pagination = ({ itemsPerPage, items, toastback, fetchData }) => {
     }
     const deleteUnit = async (id) => {
         try {
-            await axios.delete(`http://localhost:8090/api/unit/unit/${id}`, {
+            await axios.delete(`https://multishop-ecommerce.onrender.com/api/unit/unit/${id}`, {
                 headers: {
                     'x-access-token': token
                 }
@@ -83,7 +83,7 @@ const Pagination = ({ itemsPerPage, items, toastback, fetchData }) => {
         if (unitname === '' || unitname === '')
             return toastback('fail', 'Input InValid!');
         try {
-            await axios.put(`http://localhost:8090/api/unit/unit/${id}`, {
+            await axios.put(`https://multishop-ecommerce.onrender.com/api/unit/unit/${id}`, {
                 unitname: unitname,
                 short: shortname
             }, {

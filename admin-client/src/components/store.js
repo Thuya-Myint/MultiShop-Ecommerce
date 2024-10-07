@@ -58,7 +58,7 @@ const Store = ({ tokenx, id, username, role }) => {
             const storageRef = ref(storage, `shop logo/${file.name}`);
             const snapshot = await uploadBytes(storageRef, file);
             logoUrl = await getDownloadURL(snapshot.ref);
-            const token = await axios.post('http://localhost:8090/api/user/new', {
+            const token = await axios.post('https://multishop-ecommerce.onrender.com/api/user/new', {
                 username: shopUsername,
                 password: password,
                 imgSrc: 'default',

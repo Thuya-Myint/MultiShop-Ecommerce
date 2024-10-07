@@ -16,6 +16,7 @@ const shoproute = require('./src/routes/shop');
 // List of allowed origins
 const allowedOrigins = [
     'https://multishop-ecommerce-1.onrender.com', // Replace with your static site URL
+    'https://multishop-ecommerce-2.onrender.com',
     'http://localhost:3000', // Local development URL (if needed)
 ];
 

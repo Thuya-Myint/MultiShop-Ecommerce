@@ -52,7 +52,7 @@ const Sidebar = ({ actInd }) => {
     }
     const findUser = async () => {
         if (username) {
-            const data = await axios.get(`http://localhost:8090/api/user/findUser/${username}`);
+            const data = await axios.get(`https://multishop-ecommerce.onrender.com/api/user/findUser/${username}`);
             setUser(data.data);
         }
     }

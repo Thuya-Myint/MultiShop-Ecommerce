@@ -32,7 +32,7 @@ const Status = ({ token, id, username, role }) => {
     const fetchStatus = async (tv) => {
         setLoading(true);
         try {
-            const status = await axios.get('http://localhost:8090/api/status/status/AllStatus', {
+            const status = await axios.get('https://multishop-ecommerce.onrender.com/api/status/status/AllStatus', {
                 headers: {
                     'x-access-token': token
                 }
@@ -53,16 +53,16 @@ const Status = ({ token, id, username, role }) => {
 
         const encodeColor = encodeURIComponent(color)
         try {
-            const sfound = await axios.get(`http://localhost:8090/api/status/status/findWithStatus/${sname.charAt(0).toUpperCase() + sname.slice(1)}`)
+            const sfound = await axios.get(`https://multishop-ecommerce.onrender.com/api/status/status/findWithStatus/${sname.charAt(0).toUpperCase() + sname.slice(1)}`)
             console.log(sfound)
             if (sfound.data.found && sfound.data.message == 'Status must be unique!' && sfound.data.success == false && sfound.data.found._id !== upId) return toastBack('fail', 'Status name must be unique!');
 
-            const cfound = await axios.get(`http://localhost:8090/api/status/status/findWithColor/${encodeColor}`)
+            const cfound = await axios.get(`https://multishop-ecommerce.onrender.com/api/status/status/findWithColor/${encodeColor}`)
 
             if (cfound.data.found && cfound.data.message == 'Color must be unique!' && cfound.data.success == false && cfound.data.found._id !== upId) return toastBack('fail', 'Color must be unique!');
 
             if (updating) {
-                await axios.put(`http://localhost:8090/api/status/status/updateStatus/${upId}`, {
+                await axios.put(`https://multishop-ecommerce.onrender.com/api/status/status/updateStatus/${upId}`, {
                     status: sname.charAt(0).toUpperCase() + sname.slice(1),
                     color: color
                 }, {
@@ -73,7 +73,7 @@ const Status = ({ token, id, username, role }) => {
                 toastBack('success', `${sname} successfully updated!`);
             }
             else {
-                await axios.post('http://localhost:8090/api/status/status/add', {
+                await axios.post('https://multishop-ecommerce.onrender.com/api/status/status/add', {
                     status: sname.charAt(0).toUpperCase() + sname.slice(1),
                     color: color
                 }, {
@@ -93,7 +93,7 @@ const Status = ({ token, id, username, role }) => {
     }
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8090/api/status/status/deleteStatus/${id}`, {
+            await axios.delete(`https://multishop-ecommerce.onrender.com/api/status/status/deleteStatus/${id}`, {
                 headers: {
                     'x-access-token': token
                 }

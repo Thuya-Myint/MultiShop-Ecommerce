@@ -27,7 +27,7 @@ const OrderDetails = ({ role, token, top, setTop, clickItem, setClickItem, no, l
         else {
 
             try {
-                await axios.put(`http://localhost:8090/api/order/order/${clickItem._id}`, {
+                await axios.put(`https://multishop-ecommerce.onrender.com/api/order/order/${clickItem._id}`, {
                     ...clickItem,
                     orderedproduct: tempRemainingList,
                     totalQty: tempRemainingList.length
@@ -44,7 +44,7 @@ const OrderDetails = ({ role, token, top, setTop, clickItem, setClickItem, no, l
 
     }
     const modifyItemCount = async (action, id, color, size) => {
-        const { data: product } = await axios.get(`http://localhost:8090/api/product/findProduct/${id}`);
+        const { data: product } = await axios.get(`https://multishop-ecommerce.onrender.com/api/product/findProduct/${id}`);
         try {
             setClickItem((prevClickItem) => {
                 return {

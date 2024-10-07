@@ -59,7 +59,7 @@ const Product = ({ token, id, username, role }) => {
         }
     }
     const fetchProducts = async () => {
-        const products = await axios.get('http://localhost:8090/api/product/all', {
+        const products = await axios.get('https://multishop-ecommerce.onrender.com/api/product/all', {
             headers: {
                 'x-access-token': token
             }
@@ -71,7 +71,7 @@ const Product = ({ token, id, username, role }) => {
     const fetchUnits = async (tv) => {
         setLoading(true);
         try {
-            const units = await axios.get('http://localhost:8090/api/unit/all', {
+            const units = await axios.get('https://multishop-ecommerce.onrender.com/api/unit/all', {
                 headers: {
                     'x-access-token': token
                 }
@@ -184,13 +184,13 @@ const Product = ({ token, id, username, role }) => {
 
 
         if (adding) {
-            route = 'http://localhost:8090/api/product/addProduct';
+            route = 'https://multishop-ecommerce.onrender.com/api/product/addProduct';
         }
         else if (updating) {
             console.log("input photo", urlsRef.current)
             if (files.length > 0 && updating) { console.log("will delete!"); deletePhoto(); await fileUpload() };
             console.log(dragItem.imgSrcs)
-            route = `http://localhost:8090/api/product/${dragItem._id}`;
+            route = `https://multishop-ecommerce.onrender.com/api/product/${dragItem._id}`;
         }
 
         try {
@@ -275,7 +275,7 @@ const Product = ({ token, id, username, role }) => {
     const deleteProduct = async () => {
         try {
             deletePhoto();
-            await axios.delete(`http://localhost:8090/api/product/${dragItem._id}`, {
+            await axios.delete(`https://multishop-ecommerce.onrender.com/api/product/${dragItem._id}`, {
                 headers: {
                     'x-access-token': token
                 }
