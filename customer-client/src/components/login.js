@@ -34,7 +34,7 @@ const Login = () => {
     const Signup = async () => {
         setLoading(true);
         try {
-            const token = await axios.post('http://localhost:8090/api/customer/new', {
+            const token = await axios.post('https://multishop-ecommerce.onrender.com/api/customer/new', {
                 username: name,
                 password: pass,
                 imgSrc: 'default'
@@ -57,7 +57,7 @@ const Login = () => {
     const Signin = async () => {
         setLoading(true);
         try {
-            const token = await axios.post('http://localhost:8090/api/customer/old', {
+            const token = await axios.post('https://multishop-ecommerce.onrender.com/api/customer/old', {
                 username: name,
                 password: pass,
             })
