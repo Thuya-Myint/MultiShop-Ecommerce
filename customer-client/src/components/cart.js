@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import axios from 'axios';
 import { TiDeleteOutline } from "react-icons/ti";
 import dataGif from '../assets/gif/data-transfer-unscreen.gif'
-const Cart = ({ token }) => {
+const Cart = () => {
     const active = 2
     const { cartLists, setCartLists, totalCount, setTotalCount } = useContext(CartContext);
     const [totalPrice, setTotalPrice] = useState(0);
@@ -19,6 +19,7 @@ const Cart = ({ token }) => {
     const [clickImg, setClickImg] = useState(false);
     const [clickInd, setClickInd] = useState();
     const [phone, setPhone] = useState('');
+    const token = JSON.parse(localStorage.getItem('x-access-token'));
 
     useEffect(() => {
         countTotalPrice();
