@@ -45,7 +45,7 @@ const Product = () => {
 
     const fetchAllShop = async () => {
         try {
-            const allShop = await axios.get('http://localhost:8090/api/user/all', {
+            const allShop = await axios.get('https://multishop-ecommerce.onrender.com/api/user/all', {
                 headers: {
                     'x-access-token': token
                 }
@@ -65,7 +65,7 @@ const Product = () => {
     const fetchProducts = async (tv) => {
         setLoading(true);
         try {
-            const products = await axios.get('http://localhost:8090/api/product/all')
+            const products = await axios.get('https://multishop-ecommerce.onrender.com/api/product/all')
             let allProducts = Object.values(products.data);
             if (sid) {
                 allProducts = allProducts.filter(product => product.shopId === sid)

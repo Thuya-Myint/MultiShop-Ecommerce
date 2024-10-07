@@ -83,7 +83,7 @@ const Cart = ({ token }) => {
 
                 try {
                     // Send the order to MongoDB (or any backend service)
-                    await axios.post('http://localhost:8090/api/order/placeOrder', orderData, {
+                    await axios.post('https://multishop-ecommerce.onrender.com/api/order/placeOrder', orderData, {
                         headers: {
                             'x-access-token': token
                         }

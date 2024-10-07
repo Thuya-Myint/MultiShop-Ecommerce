@@ -30,7 +30,7 @@ const Home = () => {
     };
     const fetchAllShop = async () => {
         try {
-            const allShop = await axios.get('http://localhost:8090/api/user/all', {
+            const allShop = await axios.get('https://multishop-ecommerce.onrender.com/api/user/all', {
                 headers: {
                     'x-access-token': token
                 }
